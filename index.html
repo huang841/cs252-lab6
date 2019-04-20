@@ -11,14 +11,32 @@
         <form class="register-form">
             <input type="text" placeholder="Email"/>
             <input type="text" placeholder="Username"/>
-            <input type="text" placeholder="Password"/>
+            <input type="password" placeholder="Password"/>
             <button>Create</button>
-
+            <p class="message">Already Registered? <a href="#">Login</a>
+            </p>
 
         </form>
 
+        <form class="login-form">
+            <input type="text" placeholder="Username"/>
+            <input type="password" placeholder="Password"/>
+            <button>Login</button>
+            <p class="message">Not Register?<a href="#">Register</a></p>
+
+        </form>
 
     </div>
     </div>
+
+    <script src='https://code.jquery.com/jquery-3.3.1.min.js'> </script>
+
+    <script>
+        $('.message').click(function() {
+        $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+        });
+    </script>
+
 </body>
+
 </html>
