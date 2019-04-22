@@ -27,6 +27,7 @@ body{
 
 }
 .t_r div a{
+    display: none;
     color: #fff;
     font-size: 1.4em;
 }
