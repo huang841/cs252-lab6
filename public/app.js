@@ -18,7 +18,7 @@ function googleLogin() {
                 console.log(user);
             })
             .catch(function(error) {
-                console.log
+                console.log(error);
             });
 }
 
@@ -29,11 +29,15 @@ function signUp(){
     firebase.auth().createUserWithEmailAndPassword(email, password)
         .then(result => {
             const user = result.user;
+            console.log(user);
             user.updateProfile({
                 displayName: username
+            }).then(function() {
+                window.location.href="index.html";
+            }).catch(function(error) {
+                console.log(error);
             });
-            window.location.href="index.html";
-            console.log(user);  
+            
         })
         .catch(function(error) {
             var errorCode = error.code;

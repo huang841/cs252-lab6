@@ -42,13 +42,7 @@
         const userName = document.getElementById('userName');
         if(user) {
           console.log(user);
-          var x = user.displayName;
-          if(x) {
-            name = x;
-            userName.style.display = "block";
-          } else {
-            userName.style.display = "block";
-          }
+          userName.style.display = "block";
           linkLogout.style.display = "block";
           linkSignin.style.display = "none";
           linkRegister.style.display = "none";
@@ -80,9 +74,21 @@
                 </a>
             </div>
             <div>
-                <script>var name = "Anonymous"</script>
                 <a id="userName" href="">
-                    `${name}`
+                    <script>
+                      var name;
+                      firebase.auth().onAuthStateChanged(function(user) {
+                        if(user != null) {  
+                          var userName = user.displayName;                        
+                          if(userName) {
+                            name = userName;
+                          } else {
+                            name = "Anonymous";
+                          }
+                        }
+                    });
+                    document.write(`Welcome ${name}`);
+                    </script>
                 </a>
             </div>
             <div>
