@@ -5,6 +5,23 @@ body{
     background-position: center;
 }
 
+.top{
+    display: flex;
+    padding:0 5%;
+    box-sizing: border-box;
+    background: black;
+    height: 80px;
+    line-height: 80px;
+}
+
+.t_l{
+    flex:1;
+}
+.t_l a{
+    color: #fff;
+    font-size: 1.4em;
+}
+
 .login-page {
     widteh: 400px;
     padding: 20% 0 0;
@@ -14,7 +31,6 @@ body{
 .form {
     position: relative;
     z-index: 1;
-    background: #ffffff;
     max-width: 400px;
     margin: 0 auto 100px;
     padding: 45px;

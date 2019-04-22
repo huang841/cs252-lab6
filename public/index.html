@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home page</title>
+      <link rel="stylesheet" href="index.css">
+
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/5.9.4/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/5.9.4/firebase-auth.js"></script>
+    <script defer src="/__/firebase/5.9.4/firebase-database.js"></script>
+    <script defer src="/__/firebase/5.9.4/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/5.9.4/firebase-firestore.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script defer src="/__/firebase/init.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyA2F_Oj3ypKS79MPsP0T7RHmmLmLSuCHUY",
+        authDomain: "cs252-lab6-e8bb1.firebaseapp.com",
+        databaseURL: "https://cs252-lab6-e8bb1.firebaseio.com",
+        projectId: "cs252-lab6-e8bb1",
+        storageBucket: "cs252-lab6-e8bb1.appspot.com",
+        messagingSenderId: "798850310478"
+      };
+      firebase.initializeApp(config);
+    </script>
+
+  </head>
+  <body>
+    <script defer src="app.js"></script>
+
+    <script>
+      firebase.auth().onAuthStateChanged(function(user) {
+        const linkLogout = document.getElementById('linkLogout');
+        const linkRegister = document.getElementById('linkRegister');
+        const linkSignin = document.getElementById('linkSignin');
+        const userName = document.getElementById('userName');
+        if(user) {
+          console.log(user);
+          var x = user.displayName;
+          if(x) {
+            name = x;
+            userName.style.display = "block";
+          } else {
+            userName.style.display = "block";
+          }
+          linkLogout.style.display = "block";
+          linkSignin.style.display = "none";
+          linkRegister.style.display = "none";
+        } else {
+          console.log('not logged in');
+          userName.style.display = "none";
+          linkLogout.style.display = "none";
+          linkSignin.style.display = "block";
+          linkRegister.style.display = "block";
+        }
+      });
+    </script>
+
+    <div class="top">
+        <div class="t_l">
+            <a href="index.html">
+                Home
+            </a>
+        </div>
+        <div class="t_r">
+            <div>
+                <a id="linkRegister" href="register.html">
+                    register
+                </a>
+            </div>
+            <div>
+                <a id="linkSignin" href="register.html">
+                    signin
+                </a>
+            </div>
+            <div>
+                <script>var name = "Anonymous"</script>
+                <a id="userName" href="">
+                    `${name}`
+                </a>
+            </div>
+            <div>
+                <a id="linkLogout" onclick="logOut()" href="index.html">
+                    logout
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="con">
+        <div>
+          <a href="">
+              Start
+          </a>
+        </div>
+        <div>
+          <a href="rank.html">
+            Ranking list
+          </a>
+        </div>
+        <div>
+          <a href="index.html">
+            History
+          </a>
+        </div>
+    </div>
+
+    <script src='https://code.jquery.com/jquery-3.4.0.min.js'> </script>
+  
+    <script>
+      $('.message').click(function() {
+      $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+    });
+    </script>
+
+  </body>
+</html>

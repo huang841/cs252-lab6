@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Register page</title>
+      <link rel="stylesheet" href="register.css">
+
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/5.9.4/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/5.9.4/firebase-auth.js"></script>
+    <script defer src="/__/firebase/5.9.4/firebase-firestore.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script defer src="/__/firebase/init.js"></script>
+
+  </head>
+  <body>
+    <div class="top">
+        <div class="t_l">
+          <a href="index.html">
+              Home
+          </a>
+        </div>
+    </div>
+
+    <div class="login-page">
+        <div class="form">
+          <script>console.log("In sign up page")</script>
+          <form class="register-form">
+            Email<br>
+            <input id="txtemail" type="text" placeholder="Email"/>
+            Username<br>
+            <input id="txtusername" type="text" placeholder="Username"/>
+            Password<br>
+            <input id="txtpassword" type="password" placeholder="Password"/>
+            <button onclick="signUp()">
+              Create
+            </button>
+            <p class="message">Already Registered? <a href="#">Login</a>
+            </p>
+          </form>
+    
+          <form class="login-form">
+              <script>console.log("In log in page")</script>
+            Email
+            <input id="txtemailin" type="text" placeholder="Username"/>
+            Password<br>
+            <input id="txtpasswordin" type="password" placeholder="Password"/>
+            <button onclick="signIn()">
+              Login
+            </button>
+            <button onclick="googleLogin()">
+              Login with Google 
+            </button>
+          
+            <button onclick="facebookLogin()">
+              Login with Facebook
+            </button>
+  
+            <p class="message">Not Register?<a href="#">Register</a></p>
+          </form>
+    
+        </div>
+      </div>
+
+    <script src='https://code.jquery.com/jquery-3.4.0.min.js'> </script>
+  
+    <script>
+      $('.message').click(function() {
+      $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+    });
+    </script>
+
+  <script defer src="app.js"></script>
+
+  </body>
+</html>
