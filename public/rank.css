@@ -19,3 +19,45 @@ body{
     color: #fff;
     font-size: 1.4em;
 }
+
+.t_r{
+    display: flex;
+}
+.t_r>div{
+    margin:0 20px;
+
+}
+.t_r div a{
+    display: none;
+    color: #fff;
+    font-size: 1.4em;
+}
+
+.msg{
+    display: flex;
+}
+.con{
+    width: 500px;
+    color: #fff;
+    margin: 0 auto;
+    font-size: 2.2em;
+}
+.msg_name{
+    margin-left: 100px;
+    font-size: 0.8em;
+}
+.msg_score{
+    margin-left: 100px;
+    font-size: 0.8em;
+}
+table{
+    color: #fff;
+    margin: 0 auto;
+    font-size: 2.2em;
+}
+table tr th{
+    padding:0 50px;
+}
+table tr td{
+    padding:0 20px;
+} 

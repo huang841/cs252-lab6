@@ -1,12 +1,33 @@
 document.addEventListener("DOMContentLoaded", event => {
     const app = firebase.app();
     console.log(app);
-
-    const db = firebase.firestore();
-
-    const myPost = db.collection('posts').doc('firstpost');
-
 });
+
+function writeUserData(userID, name, email) {
+    const db = firebase.firestore();
+    var docRef = db.collection("users").doc(userID);
+
+    docRef.get().then(function(doc) {
+        if (doc.exists) {
+            console.log("Document data:", doc.data());
+        } else {
+            docRef.set({
+                userName: name,
+                Email: email,
+                score: 0,
+                wrongAnswer: {}
+            }).then(function() {
+                console.log("Document successfull written!");
+            }).catch(function(error) {
+                console.error("Error writing document: ", error);
+            });
+        }
+    }).then(function() {
+        window.location.href="index.html";
+    }).catch(function(error) {
+        console.error("Error writing document: ", error);
+    });
+} 
 
 function googleLogin() {
     const provider = new firebase.auth.GoogleAuthProvider();
@@ -14,8 +35,10 @@ function googleLogin() {
             .then(result => {
                 console.log("In googleLogin");
                 const user = result.user;
-                window.location.href="index.html";
-                console.log(user);
+                const userID = user.uid;
+                const name = user.displayName;
+                const Email = user.email;
+                writeUserData(userID, name, Email);
             })
             .catch(function(error) {
                 console.log(error);
@@ -33,7 +56,11 @@ function signUp(){
             user.updateProfile({
                 displayName: username
             }).then(function() {
-                window.location.href="index.html";
+                const user = result.user;
+                const userID = user.uid;
+                const name = user.displayName;
+                const Email = user.email;
+                writeUserData(userID, name, Email);
             }).catch(function(error) {
                 console.log(error);
             });
@@ -78,7 +105,10 @@ function facebookLogin(){
     firebase.auth().signInWithPopup(provider)
             .then(result => {
                 const user = result.user;
-                window.location.href="index.html";
+                const userID = user.uid;
+                const name = user.displayName;
+                const Email = user.email;
+                writeUserData(userID, name, Email);
                 console.log(user);
             })
             .catch(function(error) {
@@ -97,16 +127,4 @@ function logOut(){
         }).catch(function(error) {
             console.log(error);
         });
-}
-
-function updatePost(e) {
-    const db = firebase.firestore();
-    const myPost = db.collection('posts').doc('firstpost');
-    myPost.update({title: e.target.value})
-}
-
-function createAEmail(e) {
-    const db = firebase.firestore();
-    const myPost = db.collection('posts').doc('firstpost');
-    myPost.update({Email: e.target.value})
 }

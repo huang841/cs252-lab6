@@ -30,8 +30,6 @@
 
   </head>
   <body>
-    <script defer src="app.js"></script>
-
     <script>
       firebase.auth().onAuthStateChanged(function(user) {
         const linkLogout = document.getElementById('linkLogout');
@@ -103,21 +101,17 @@
     </div>
 
     <div class="con">
-      <div>
-        <a href="game.html">
-          Start
-        </a>
-      </div>
-      <div>
-        <a href="rank.html">
-          Ranking list
-        </a>
-      </div>
-      <div>
-        <a href="history.html">
-          History
-        </a>
-      </div>
+        <script defer src="question.js"></script>
+        <div id="question" class="msg">
+        </div>
+        <ol id="Choice" class="choice">
+            <li id="choiceA">
+            </li>
+            <li id="choiceB">
+            </li>
+            <li id="choiceC">
+            </li>
+        </ol>
     </div>
 
   </body>

@@ -47,6 +47,15 @@ body{
     margin: 10px 0;
 }
 
+.msg{
+    display: flex;
+    margin-left: 150px;
+}
+
+.choice{
+    margin-top: 40px;
+}
+
 .con div a{
     color: black;
 }

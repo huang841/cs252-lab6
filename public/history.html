@@ -88,83 +88,37 @@
             </div>
         </div>
       
-        <div class="con">
-            <div class="msg">
-                <div class="msg_name">
-                    <p id="myUsername"></p>
-                    <script>
-                        firebase.auth().onAuthStateChanged(function(user) {
-                            if(user != null) {  
-                                var userName = user.displayName; 
-                                document.getElementById("myUsername").innerHTML = `Username: ${userName}`;                      
-                            }
-                        });
-                    </script>
-                </div>
-                <div class="msg_score">
-                    <p id="myScore"></p>
-                    <script>
-                        firebase.auth().onAuthStateChanged(function(user) {
-                            if(user != null) { 
-                                const db = firebase.firestore();
-                                var docRef = db.collection("users").doc(user.uid); 
-                                docRef.get().then(function(doc) {
-                                    if (doc.exists) {
-                                        document.getElementById("myScore").innerHTML = `Score: ${doc.data().score}`;
-                                        console.log("Document data:", doc.data());
-                                    } else {
-                                        console.log("No such document!");
-                                    }
-                                }).catch(function(error) {
-                                    console.log("Error getting document:", error);
-                                });                       
-                            }
-                        });
-                    </script>
-                </div>
-            </div>
-        </div>
         <table>
             <tr>
                 <th></th>
-                <th>Name</th>
-                <th>Score</th>
+                <th>Question</th>
+                <th>Correct Answer</th>
             </tr>
-            <script defer src="rank.js"></script>
+            <script defer src="history.js"></script>
             <tr>
-                <td>1</td>
-                <td id="firstName">
-                </td>
-                <td id="firstScore">
-                </td>
+                <td id="i1"></td>
+                <td id="Q1"></td>
+                <td id="A1"></td>
             </tr>
             <tr>
-                <td>2</td>
-                <td id="secondName">
-                </td>
-                <td id="secondScore">
-                </td>
+                <td id="i2"></td>
+                <td id="Q2"></td>
+                <td id="A2"></td>
             </tr>
             <tr>
-                <td>3</td>
-                <td id="thirdName">
-                </td>
-                <td id="thirdScore">
-                </td>
+                <td id="i3"></td>
+                <td id="Q3"></td>
+                <td id="A3"></td>
             </tr>
             <tr>
-                <td>4</td>
-                <td id="fourthName">
-                </td>
-                <td id="fourthScore">
-                </td>
+                <td id="i4"></td>
+                <td id="Q4"></td>
+                <td id="A4"></td>
             </tr>
             <tr>
-                <td>5</td>
-                <td id="fifthName">
-                </td>
-                <td id="fifthScore">
-                </td>
+                <td id="i5"></td>
+                <td id="Q5"></td>
+                <td id="A5"></td>
             </tr>
         </table>
     </body>
