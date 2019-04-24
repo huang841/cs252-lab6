@@ -47,7 +47,7 @@ function test(){
     }
     if(value == correctAnswer){
         //document.getElementById('popup').style.display='none';
-        window.location.href="game.html";
+        window.location.href="mygame.html";
     }else {
         if (correctAnswer == "a") 
             answer = choiceA;
