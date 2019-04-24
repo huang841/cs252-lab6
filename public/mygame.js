@@ -182,7 +182,7 @@ function end() {
   ctx.textAlign = 'center';
   ctx.fillText('Click to continue ', canvas.width / 2, canvas.height / 2 + 360);
   updateScore(score);
-  window.location.href="question.html";
+  window.location.href="../question.html";
 }
 
 // Update the User's score

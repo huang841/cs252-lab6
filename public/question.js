@@ -49,11 +49,11 @@ function test(){
         //document.getElementById('popup').style.display='none';
         window.location.href="game.html";
     }else {
-        if (value == "a") 
+        if (correctAnswer == "a") 
             answer = choiceA;
-        if (value == "b") 
+        if (correctAnswer == "b") 
             answer = choiceB;
-        if (value == "c") 
+        if (correctAnswer == "c") 
             answer = choiceC; 
  
         firebase.auth().onAuthStateChanged(function(user) {
