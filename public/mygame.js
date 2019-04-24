@@ -26,7 +26,7 @@ var fy = Math.floor((Math.random() * 768) + 32);
 //set player speed
 var playerspeed = 6;
 
-
+const playtime = 2;
 
 //set player score and operation
 var score = 0;
@@ -36,10 +36,8 @@ var left = false;
 var right = false;
 
 //Timer
-var timer = 10;
+var timer = playtime;
 var timercheck = null;
-
-
 
 //Keydown listen
 canvas.addEventListener('keydown', function(listen) {
@@ -163,8 +161,8 @@ function draw() {
   
   if (timer <= 0) {
     end();
-    timer = 10;
-    canvas.addEventListener('click', start); 
+    timer = playtime;
+    canvas.addEventListener('click', question); 
   } else {
     window.requestAnimationFrame(draw);
   }
@@ -182,7 +180,6 @@ function end() {
   ctx.textAlign = 'center';
   ctx.fillText('Click to continue ', canvas.width / 2, canvas.height / 2 + 360);
   updateScore(score);
-  window.location.href="../question.html";
 }
 
 // Update the User's score
@@ -202,6 +199,10 @@ function updateScore(userscore) {
       }
   });
 } 
+
+function question() {
+  window.location.href="question.html";
+}
 
 
 menu();
