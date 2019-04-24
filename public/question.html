@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Home page</title>
-      <link rel="stylesheet" href="index.css">
-
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>rank</title>
+    <link rel="stylesheet" href="question.css">
+    <script type="text/javascript"></script>
     <!-- update the version number as needed -->
     <script defer src="/__/firebase/5.9.4/firebase-app.js"></script>
     <!-- include only the Firebase features as you need -->
@@ -27,13 +26,10 @@
       };
       firebase.initializeApp(config);
     </script>
+</head>
 
-  </head>
-  <body>
-    <script defer src="app.js"></script>
-
-    <script>
-      firebase.auth().onAuthStateChanged(function(user) {
+<script>
+firebase.auth().onAuthStateChanged(function(user) {
         const linkLogout = document.getElementById('linkLogout');
         const linkSignin = document.getElementById('linkSignin');
         const userName = document.getElementById('userName');
@@ -49,69 +45,71 @@
           linkSignin.style.display = "block";
         }
       });
-    </script>
+</script>
 
-    <div class="top">
-      <div class="t_l">
+<body>
+<div class="top">
+    <div class="t_l">
         <a href="index.html">
-          Home
+            Home
         </a>
-      </div>
-      <div class="t_r">
-        
-        <div>
-          <a id="linkSignin" href="register.html">
+    </div>
+
+    <div class="t_r">  
+    <div>
+        <a id="linkSignin" href="register.html">
             signin
-          </a>
-        </div>
-        <div>
-          <a id="userName" href="">
+        </a>
+    </div>
+    <div>
+        <a id="userName" href="">
             <script>
-              firebase.auth().onAuthStateChanged(function(user) {
+            firebase.auth().onAuthStateChanged(function(user) {
                 if(user != null) {  
-                  var userName = user.displayName;                        
-                  if(userName) {
+                var userName = user.displayName;                        
+                if(userName) {
                     document.getElementById("userName").innerHTML = `Welcome ${userName}`;
-                  } else {
+                } else {
                     user.updateProfile({
-                      displayName: "Anonymous"
+                    displayName: "Anonymous"
                     }).then(function(){
-                      document.getElementById("userName").innerHTML = `Welcome Anonymous}`;
+                        document.getElementById("userName").innerHTML = `Welcome Anonymous}`;
                     }).catch(function(error) {
-                      console.log(error);
+                        console.log(error);
                     });
-                  }
                 }
-              });
-              
+                }
+            });
             </script>
-          </a>
-        </div>
-        <div>
-          <a id="linkLogout" onclick="logOut()" href="index.html">
+        </a>
+    </div>
+    <div>
+        <a id="linkLogout" onclick="logOut()" href="index.html">
             logout
-          </a>
-        </div>
-      </div>
+        </a>
     </div>
-
-    <div class="con">
-      <div>
-        <a href="game.html">
-          Start
-        </a>
-      </div>
-      <div>
-        <a href="rank.html">
-          Ranking list
-        </a>
-      </div>
-      <div>
-        <a href="history.html">
-          History
-        </a>
-      </div>
     </div>
+  </div>
 
-  </body>
+<div id="popup">
+    <h3 id="question"></h3>
+    <label for="a1">
+        <input type="radio" id="a1" name="loan" value="a" onclick="test()">
+        <p id="choiceA"></p>
+    </label>
+    <br>
+
+    <label for="a2">
+        <input type="radio" id="a2" name="loan" value="b" onclick="test()">
+        <p id="choiceB"></p>
+    </label>
+    <br>
+    <label for="a3">
+        <input type="radio" id="a3" name="loan" value="c" onclick="test()">
+        <p id="choiceC"></p>
+    </label>
+</div>
+
+<script src="question.js"></script>
+</body>
 </html>

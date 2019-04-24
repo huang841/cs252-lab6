@@ -1,0 +1,57 @@
+body{
+    background-image: url(loginbg.jpg);
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+.top{
+    display: flex;
+    padding:0 5%;
+    box-sizing: border-box;
+    background: black;
+    height: 80px;
+    line-height: 80px;
+}
+.t_l{
+    flex:1;
+}
+.t_l a{
+    color: #fff;
+    font-size: 1.4em;
+}
+.t_r{
+    display: flex;
+}
+.t_r>div{
+    margin:0 20px;
+
+}
+.t_r div a{
+    display: none;
+    color: #fff;
+    font-size: 1.4em;
+}
+.btn{
+    width:200px;
+    height:50px;
+    line-height: 50px;
+    text-align: center;
+    margin:0 auto;
+    background: #427ad0;
+    border-radius: 999px;
+    color: #fff;
+    margin-top: 200px;
+}
+#popup{
+    width:400px;
+    margin:0 auto;
+    position: absolute;
+    left: 50%;
+    margin-left: -200px;
+    top:270px;
+    padding: 40px;
+}
+
+.con div a{
+    color: black;
+}

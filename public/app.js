@@ -10,6 +10,7 @@ function writeUserData(userID, name, email) {
     docRef.get().then(function(doc) {
         if (doc.exists) {
             console.log("Document data:", doc.data());
+            window.location.href="index.html";
         } else {
             docRef.set({
                 userName: name,
@@ -18,12 +19,13 @@ function writeUserData(userID, name, email) {
                 wrongAnswer: {}
             }).then(function() {
                 console.log("Document successfull written!");
+                window.location.href="index.html";
             }).catch(function(error) {
                 console.error("Error writing document: ", error);
             });
         }
     }).then(function() {
-        window.location.href="index.html";
+       
     }).catch(function(error) {
         console.error("Error writing document: ", error);
     });
@@ -55,16 +57,13 @@ function signUp(){
             console.log(user);
             user.updateProfile({
                 displayName: username
-            }).then(function() {
-                const user = result.user;
-                const userID = user.uid;
-                const name = user.displayName;
-                const Email = user.email;
-                writeUserData(userID, name, Email);
             }).catch(function(error) {
                 console.log(error);
             });
-            
+            const userID = user.uid;
+            const name = username;
+            const Email = user.email;
+            writeUserData(userID, name, Email);  
         })
         .catch(function(error) {
             var errorCode = error.code;
