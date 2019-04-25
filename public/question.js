@@ -1,7 +1,7 @@
 const db = firebase.firestore();
 
 var min=0;
-var max=3;
+var max=31;
 var randNum = Math.round(Math.random() * (max-min)) + min;
 var questionNum = `q${randNum}`;
 var correctAnswer;

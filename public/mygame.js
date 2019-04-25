@@ -26,7 +26,7 @@ var fy = Math.floor((Math.random() * 768) + 32);
 //set player speed
 var playerspeed = 6;
 
-const playtime = 2;
+const playtime = 10;
 
 //set player score and operation
 var score = 0;
@@ -184,6 +184,7 @@ function end() {
 
 // Update the User's score
 function updateScore(userscore) {
+  const db = firebase.firestore();
   firebase.auth().onAuthStateChanged(function(user) {
       if(user) {
           console.log(user);
