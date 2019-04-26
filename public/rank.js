@@ -2,7 +2,7 @@ const db = firebase.firestore();
 
 var usersRef = db.collection("users");
 
-usersRef.orderBy("score", "desc").limit(5)
+usersRef.orderBy("maxscore", "desc").limit(5)
     .get()
     .then(function(querySnapshot) {
         var nameArray = [];
@@ -10,7 +10,7 @@ usersRef.orderBy("score", "desc").limit(5)
         var i = 0;
         querySnapshot.forEach(function(doc) {
             nameArray[i] = doc.data().userName;
-            scoreArray[i] = doc.data().score;
+            scoreArray[i] = doc.data().maxscore;
             i = i + 1;
             console.log(i, doc.id, " => ", doc.data());
         });
