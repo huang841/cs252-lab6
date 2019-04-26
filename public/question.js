@@ -61,13 +61,18 @@ function test(){
                 console.log(user);
                 db.collection("users").doc(user.uid).get().then(function(doc) {
                     if (doc.exists) {
+                        var score = doc.data().score;
+                        var max = doc.data().maxscore;
                         map = doc.data().wrongAnswer;
-                        console.log(map);
+                        console.log(score, max);
                         map[`${question}`] = answer;
                         console.log(map);
-
+                        if (score > max) 
+                            max = score;
                         db.collection("users").doc(user.uid).update({
-                            wrongAnswer: map
+                            wrongAnswer: map,
+                            score : 0,
+                            maxscore : max 
                         }).then(function(){
                             window.location.href="index.html";
                             console.log("Document successfully updated");

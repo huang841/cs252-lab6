@@ -32,6 +32,26 @@ const playtime = 10;
 
 //set player score and operation
 var score = 0;
+const db = firebase.firestore();
+
+firebase.auth().onAuthStateChanged(function(user) {
+  if(user) {
+    console.log(user);
+    var docRef = db.collection("users").doc(user.uid); 
+    docRef.get().then(function(doc) {
+      if (doc.exists) {
+        score = doc.data().score; 
+        console.log(curScore);
+      } else {
+        console.log("No such document!");
+      }
+    }).catch(function(error) {
+        console.log("Error getting document:", error);
+    });
+  } else {
+    console.log('not logged in');
+  }
+});
 var up = false;
 var down = false;
 var left = false;
@@ -200,9 +220,23 @@ function end() {
 // Update the User's score
 function updateScore(userscore) {
   const db = firebase.firestore();
+  var curScore = 0;
   firebase.auth().onAuthStateChanged(function(user) {
       if(user) {
           console.log(user);
+          var docRef = db.collection("users").doc(user.uid); 
+          docRef.get().then(function(doc) {
+              if (doc.exists) {
+                curScore = doc.data().score; 
+                console.log(curScore);
+              } else {
+                console.log("No such document!");
+              }
+            }).catch(function(error) {
+              console.log("Error getting document:", error);
+          });
+
+          //userscore = curScore + userscore;
           db.collection("users").doc(user.uid).update({
               score: userscore
           }).then(function(){
