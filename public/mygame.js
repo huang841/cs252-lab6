@@ -19,8 +19,8 @@ var gy = Math.floor((Math.random() * 800) + 1);
 
 var flowerImage = new Image();
 flowerImage.src = "images/flower.png";
-var fx = Math.floor((Math.random() * 968) + 32);
-var fy = Math.floor((Math.random() * 768) + 32);
+var fx = Math.floor((Math.random() * 900) + 1);
+var fy = Math.floor((Math.random() * 700) + 1);
 
 
 //set player speed
@@ -103,8 +103,8 @@ function clean() {
 
 //respawn the eaten target
 function respawn() {
-  fx = 	Math.floor((Math.random() * 968) + 32);
-  fy = Math.floor((Math.random() * 768) + 32);
+  fx = 	Math.floor((Math.random() * 900) + 1);
+  fy = Math.floor((Math.random() * 700) + 1);
 }
 
 //function when click startgame
@@ -198,7 +198,7 @@ function end() {
   ctx.textAlign = 'center';
   ctx.fillText('Your Score: ' + score, canvas.width / 2, canvas.height / 2 + 300);
   ctx.textAlign = 'center';
-  ctx.fillText('Click to continue ', canvas.width / 2, canvas.height / 2 + 360);
+  ctx.fillText('Want to restart? Click! :) ', canvas.width / 2, canvas.height / 2 + 360);
   updateScore(score);
 }
 
