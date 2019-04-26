@@ -2,9 +2,6 @@
 var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
 
-var sunflower = new Image();
-sunflower.src = "images/sunflower.png";
-
 var background = new Image();
 background.src = "images/background.png";
 
@@ -21,6 +18,11 @@ var flowerImage = new Image();
 flowerImage.src = "images/flower.png";
 var fx = Math.floor((Math.random() * 900) + 1);
 var fy = Math.floor((Math.random() * 700) + 1);
+
+var bombImage = new Image();
+bombImage.src = "images/bomb.png";
+var bx = Math.floor((Math.random() * 900) + 1);
+var by = Math.floor((Math.random() * 700) + 1);
 
 
 //set player speed
@@ -87,6 +89,11 @@ function respawn() {
   fy = Math.floor((Math.random() * 700) + 1);
 }
 
+function bombrespawn() {
+  bx = 	Math.floor((Math.random() * 900) + 1);
+  by = Math.floor((Math.random() * 700) + 1);
+}
+
 //function when click startgame
 function start() {
   timercheck = setInterval(function() {
@@ -100,7 +107,6 @@ function start() {
 //show menu
 function menu() {
   clean();
-  ctx.drawImage(sunflower, 0, 0);
   ctx.strokeStyle = '#000000';
   ctx.fillStyle = "#000000";
   ctx.font = "normal 36px Verdana";
@@ -141,16 +147,25 @@ function draw() {
   if (gx + 32 > canvas.width) {
     gx = canvas.width - 32;
   }
-  // if eat
+  // if touch flower
   if (gx <= (fx+32) && gy <= (fy+32) && fx <= (gx+32) && fy <= (gy+32)) {
-    
+      bombrespawn();
       respawn();
       score++;
     
   }
+
+  // if touch bomb
+  if (gx <= (bx+32) && gy <= (by+32) && bx <= (gx+32) && by <= (gy+32)) {
+     bombrespawn();
+      respawn();
+      score--;
+  } 
+
   ctx.drawImage(background,0,0);
   ctx.drawImage(girlImage,gx,gy);
   ctx.drawImage(flowerImage,fx,fy);
+  ctx.drawImage(bombImage,bx,by);
 
   ctx.fillStyle = '#000000';
   ctx.font = '24px Arial';
