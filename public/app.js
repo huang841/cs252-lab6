@@ -16,6 +16,7 @@ function writeUserData(userID, name, email) {
                 userName: name,
                 Email: email,
                 score: 0,
+                maxscore:0,
                 wrongAnswer: {}
             }).then(function() {
                 console.log("Document successfull written!");

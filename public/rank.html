@@ -110,7 +110,7 @@
                                 var docRef = db.collection("users").doc(user.uid); 
                                 docRef.get().then(function(doc) {
                                     if (doc.exists) {
-                                        document.getElementById("myScore").innerHTML = `Score: ${doc.data().score}`;
+                                        document.getElementById("myScore").innerHTML = `Score: ${doc.data().maxscore}`;
                                         console.log("Document data:", doc.data());
                                     } else {
                                         console.log("No such document!");
